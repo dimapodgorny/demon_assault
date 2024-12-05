@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://chix6ybkjeqa7"]
+
+[ext_resource type="Script" path="res://UI/player_slot.gd" id="1_i2yfe"]
+[ext_resource type="Texture2D" uid="uid://c6i4sl3vnuxd7" path="res://TEXTURE_NULL.png" id="1_o8u28"]
+
+[node name="character slot" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(130, 132)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -65.0
+offset_top = -66.0
+offset_right = 65.0
+offset_bottom = 66.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_i2yfe")
+
+[node name="character name" type="Label" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -58.0
+offset_right = 52.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "idk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="character icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o8u28")
+expand_mode = 5
+
+[node name="selection" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 22.0
+offset_right = 42.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "button"

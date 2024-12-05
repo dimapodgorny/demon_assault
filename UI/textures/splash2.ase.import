@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bewjb32x5ml24"
+path="res://.godot/imported/splash2.ase-30518002d2f821731fe2d38635c4ab72.res"
+
+[deps]
+
+source_file="res://UI/textures/splash2.ase"
+dest_files=["res://.godot/imported/splash2.ase-30518002d2f821731fe2d38635c4ab72.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

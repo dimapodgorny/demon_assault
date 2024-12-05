@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://brj2mkpui5f41"
+path="res://.godot/imported/lightPunch.ase-e06ea7072bc0d8b1e125afd68e0d0be2.res"
+
+[deps]
+
+source_file="res://Characters/tall_guy/Sprites/lightPunch.ase"
+dest_files=["res://.godot/imported/lightPunch.ase-e06ea7072bc0d8b1e125afd68e0d0be2.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ba1hdpqwl0ier"
+path="res://.godot/imported/walk.ase-b36a88caaf672ab360c16771f3f1265c.res"
+
+[deps]
+
+source_file="res://Characters/tall_guy/Sprites/walk.ase"
+dest_files=["res://.godot/imported/walk.ase-b36a88caaf672ab360c16771f3f1265c.res"]
+
+[params]
+

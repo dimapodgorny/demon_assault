@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgyegn7lj0f4h"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_5f2sc"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_pyeog"]
+[ext_resource type="Script" path="res://game/level.gd" id="2_q6t73"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_5f2sc")
+
+[node name="Level" type="Node2D" parent="."]
+script = ExtResource("2_q6t73")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="FX" type="Node2D" parent="."]
+
+[node name="GameCam" type="Camera2D" parent="."]
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("2_pyeog")

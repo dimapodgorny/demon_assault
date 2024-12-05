@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://u70xnotgeuvh"]
+
+[ext_resource type="Script" path="res://Characters/BaseChar.gd" id="1_cegty"]
+[ext_resource type="SpriteFrames" uid="uid://dm6pngbe4urta" path="res://Characters/BaseSpriteFrames.tres" id="2_kwu7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ptvf"]
+size = Vector2(16, 16)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nc47d"]
+
+[node name="Character" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_cegty")
+
+[node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_6ptvf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_kwu7o")
+offset = Vector2(0, -16)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_nc47d")

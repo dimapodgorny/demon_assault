@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bd064xt6pdiys"
+path="res://.godot/imported/SPLASH_SCREEN.ase-58d92f86ab9cdd311e85609077bc06a0.res"
+
+[deps]
+
+source_file="res://UI/textures/SPLASH_SCREEN.ase"
+dest_files=["res://.godot/imported/SPLASH_SCREEN.ase-58d92f86ab9cdd311e85609077bc06a0.res"]
+
+[params]
+

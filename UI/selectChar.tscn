@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://br0uxa1hwlpbb"]
+
+[sub_resource type="Theme" id="Theme_iw7bh"]
+VBoxContainer/constants/separation = 10
+
+[node name="SelectChar" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_iw7bh")
+theme_override_constants/separation = 470
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+button_mask = 5
+text = "player 1 ready"
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "player 2 ready"
