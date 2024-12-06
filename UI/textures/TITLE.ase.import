@@ -1,7 +1,7 @@
 [remap]
 
-importer="aseprite_wizard.plugin.noop"
-type="PackedDataContainer"
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
 uid="uid://c8uyd2fqgaddq"
 path="res://.godot/imported/TITLE.ase-598accd893df84f949b941ca8aed893e.res"
 
@@ -12,3 +12,5 @@ dest_files=["res://.godot/imported/TITLE.ase-598accd893df84f949b941ca8aed893e.re
 
 [params]
 
+exclude_layers_pattern=""
+only_visible_layers=false

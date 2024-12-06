@@ -1,6 +1,7 @@
 extends Control
 
-@onready var network: Node = %Network
+@onready var network: NetworkHandler = %Network
+
 
 func _ready() -> void:
 	pass
@@ -8,6 +9,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 	
+
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 

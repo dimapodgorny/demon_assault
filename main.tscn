@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmnhc8r14p71o"]
+[gd_scene load_steps=8 format=3 uid="uid://dmnhc8r14p71o"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_by620"]
-[ext_resource type="Texture2D" uid="uid://d1cxuior8u7dg" path="res://splash2.png" id="2_hem3h"]
 [ext_resource type="Script" path="res://network.gd" id="2_s25u2"]
+[ext_resource type="Texture2D" uid="uid://b1aotnfe16rm5" path="res://SPLASH_SCREEN.png" id="2_vebw2"]
+[ext_resource type="Texture2D" uid="uid://cggwvayd18csm" path="res://UI/textures/TITLE.png" id="3_4ruiw"]
 [ext_resource type="PackedScene" uid="uid://bycuukmjrqt1x" path="res://UI/lobby.tscn" id="3_kvbb5"]
+[ext_resource type="Script" path="res://debug.gd" id="4_i5d42"]
 [ext_resource type="PackedScene" uid="uid://dckb61r8luk25" path="res://UI/main_menu.tscn" id="4_t0a5d"]
 
 [node name="Main" type="Node2D"]
@@ -28,7 +30,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_hem3h")
+texture = ExtResource("2_vebw2")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -42,9 +44,24 @@ metadata/_aseprite_wizard_config_ = {
 "only_visible": false,
 "player": "",
 "slice": "",
-"source": "res://UI/textures/splash2.ase"
+"source": "res://UI/textures/SPLASH_SCREEN.ase"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "f9e194393d2253505a4d398b2b8cc72a"
+metadata/_aseprite_wizard_source_file_hash_ = "0477fcb5ca20261241cb9fba19f690ec"
+
+[node name="Title" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -169.0
+offset_right = 185.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(186, 126)
+texture = ExtResource("3_4ruiw")
 
 [node name="debug" type="Control" parent="."]
 z_index = 4096
@@ -53,13 +70,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = -576.0
 offset_top = -324.0
-offset_right = -508.0
+offset_right = -241.0
 offset_bottom = 324.0
+script = ExtResource("4_i5d42")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="debug"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 124.0
+layout_mode = 2
+offset_right = 68.0
+offset_bottom = 133.0
 
 [node name="DEBUG" type="Label" parent="debug/VBoxContainer"]
 custom_minimum_size = Vector2(68, 0)
@@ -121,4 +139,4 @@ spawn_path = NodePath("../Network")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 0)
 
-[connection signal="text_submitted" from="debug/VBoxContainer/command" to="." method="_on_command_text_submitted"]
+[connection signal="text_submitted" from="debug/VBoxContainer/command" to="debug" method="_on_command_text_submitted"]

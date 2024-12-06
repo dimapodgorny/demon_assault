@@ -6,6 +6,9 @@ var _syncNode = MultiplayerSynchronizer.new()
 func sync_globals():
 	_syncNode.visibility_update_mode = MultiplayerSynchronizer.VISIBILITY_PROCESS_NONE
 
+func nothing() -> String:
+	return "nothing"
+
 #####################################
 ## Character stuff
 var char_paths = {
