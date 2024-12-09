@@ -129,6 +129,26 @@ offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 324.0
 
+[node name="UsernameEdit" type="LineEdit" parent="Network/Node2D/Lobby"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 25.0
+offset_right = 321.0
+offset_bottom = 48.0
+
+[node name="UsernameEnter" type="Button" parent="Network/Node2D/Lobby/UsernameEdit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 223.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "->"
+
 [node name="Game" parent="Network/Node2D" instance_placeholder="res://game/game.tscn"]
 visible = false
 
@@ -140,3 +160,5 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 0)
 
 [connection signal="text_submitted" from="debug/VBoxContainer/command" to="debug" method="_on_command_text_submitted"]
+[connection signal="text_changed" from="Network/Node2D/Lobby/UsernameEdit" to="Network" method="_on_username_edited"]
+[connection signal="pressed" from="Network/Node2D/Lobby/UsernameEdit/UsernameEnter" to="Network" method="_on_username_button_pressed"]
