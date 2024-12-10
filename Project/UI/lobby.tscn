@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://bycuukmjrqt1x"]
+
+[ext_resource type="Script" path="res://UI/lobby.gd" id="1_nuswy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3qsh"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 0.607843)
+border_width_left = 4
+border_width_top = 8
+border_color = Color(0.137255, 0.137255, 0.137255, 0.607843)
+expand_margin_bottom = 20.0
+
+[node name="Lobby" type="Control"]
+process_mode = 1
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nuswy")
+metadata/_edit_use_anchors_ = true
+
+[node name="players" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 68.0
+offset_top = 74.0
+offset_right = 108.0
+offset_bottom = 114.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="players"]
+custom_minimum_size = Vector2(251, 520)
+layout_mode = 2
+offset_top = -29.0
+offset_right = 251.0
+offset_bottom = 491.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3qsh")
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="players/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PLAYERS HERE" type="Label" parent="players/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(235.057, 0)
+layout_mode = 2
+text = "PLAYERS WILL BE STORED AS SIBLINGS TO THIS NODE"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerSlot" parent="players/ScrollContainer/VBoxContainer" instance_placeholder="res://UI/player_slot.tscn"]
+layout_mode = 2
+
+[node name="BackToMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 598.0
+offset_right = 251.0
+offset_bottom = 622.0
+theme_override_font_sizes/font_size = 17
+text = "back to main menu"
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

@@ -1,0 +1,164 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmnhc8r14p71o"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_by620"]
+[ext_resource type="Script" path="res://network.gd" id="2_s25u2"]
+[ext_resource type="Texture2D" uid="uid://b1aotnfe16rm5" path="res://SPLASH_SCREEN.png" id="2_vebw2"]
+[ext_resource type="Texture2D" uid="uid://cggwvayd18csm" path="res://UI/textures/TITLE.png" id="3_4ruiw"]
+[ext_resource type="PackedScene" uid="uid://bycuukmjrqt1x" path="res://UI/lobby.tscn" id="3_kvbb5"]
+[ext_resource type="Script" path="res://debug.gd" id="4_i5d42"]
+[ext_resource type="PackedScene" uid="uid://dckb61r8luk25" path="res://UI/main_menu.tscn" id="4_t0a5d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_by620")
+metadata/_edit_vertical_guides_ = [-576.0, -508.0, 576.0]
+metadata/_edit_horizontal_guides_ = [-324.0, 324.0]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -4096
+z_as_relative = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vebw2")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://UI/textures/SPLASH_SCREEN.ase"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0477fcb5ca20261241cb9fba19f690ec"
+
+[node name="Title" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -169.0
+offset_right = 185.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(186, 126)
+texture = ExtResource("3_4ruiw")
+
+[node name="debug" type="Control" parent="."]
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -241.0
+offset_bottom = 324.0
+script = ExtResource("4_i5d42")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug"]
+layout_mode = 2
+offset_right = 68.0
+offset_bottom = 133.0
+
+[node name="DEBUG" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "DEBUG"
+autowrap_mode = 2
+
+[node name="Connected Peers" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "Connected Peers: n/a"
+autowrap_mode = 2
+
+[node name="PID" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "PID:"
+autowrap_mode = 2
+
+[node name="Client_ID" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "Client ID: n/a"
+autowrap_mode = 2
+
+[node name="command" type="LineEdit" parent="debug/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+placeholder_text = "press \\ for cmd"
+expand_to_text_length = true
+
+[node name="Network" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_s25u2")
+
+[node name="Node2D" type="Node2D" parent="Network"]
+
+[node name="Lobby" parent="Network/Node2D" instance=ExtResource("3_kvbb5")]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="UsernameEdit" type="LineEdit" parent="Network/Node2D/Lobby"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 25.0
+offset_right = 321.0
+offset_bottom = 48.0
+
+[node name="UsernameEnter" type="Button" parent="Network/Node2D/Lobby/UsernameEdit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 223.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "->"
+
+[node name="Game" parent="Network/Node2D" instance_placeholder="res://game/game.tscn"]
+visible = false
+
+[node name="Camera" type="Camera2D" parent="Network/Node2D/Game"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Network")
+
+[node name="MainMenu" parent="." instance=ExtResource("4_t0a5d")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+
+[connection signal="text_submitted" from="debug/VBoxContainer/command" to="debug" method="_on_command_text_submitted"]
+[connection signal="text_changed" from="Network/Node2D/Lobby/UsernameEdit" to="Network" method="_on_username_edited"]
+[connection signal="pressed" from="Network/Node2D/Lobby/UsernameEdit/UsernameEnter" to="Network" method="_on_username_button_pressed"]
