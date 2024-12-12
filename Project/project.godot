@@ -21,6 +21,7 @@ boot_splash/use_filter=false
 [autoload]
 
 Global="*res://global.gd"
+ChallengeHandler="*res://Scripts/challenge_handler.gd"
 
 [display]
 

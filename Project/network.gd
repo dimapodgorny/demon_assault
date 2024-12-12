@@ -31,13 +31,23 @@ signal players_refreshed
 @warning_ignore("unused_signal")
 signal username_changed
 
-func _init() -> void:
-	pass
+var Player_A : int
+var Player_B : int
+
+var PlayersFighting : Dictionary = { }
+
+
+@rpc("any_peer", "call_local", "reliable")
+func set_Player_A_ID(ID : int):
+	Player_A = ID
+
+@rpc("any_peer", "call_local", "reliable")
+func set_Player_B_ID(ID : int):
+	Player_B = ID
+
 	
 func _ready() -> void:
 	server_created.connect(update_peers)
-	client_connected.connect(Global.nothing)
-	client_connection_failed.connect(Global.nothing)
 
 
 ## GENERAL NETWORKING
@@ -82,6 +92,7 @@ func create_server(port : int = PORT):
 		
 		call_deferred("update_peers")
 	else:
+		networkPeer = null
 		printerr("Failed to create server: ", netErr)
 		emit_signal("server_creation_failed")
 	return netErr
@@ -140,10 +151,9 @@ func _disconnect_all_peers():
 	server_closing_peers_disconnected.emit()
 	
 
-
 func _on_username_button_pressed() -> void:
-	_update_username.rpc($Node2D/Lobby/LineEdit.text)
+	_update_username.rpc($Node2D/Lobby/UsernameEdit.text)
 
 func _on_username_edited(new_text: String) -> void:
-	var ID = multiplayer.get_unique_id()
+	var _ID = multiplayer.get_unique_id()
 	_update_username.rpc(new_text)

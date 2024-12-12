@@ -12,14 +12,10 @@ var border_TR = Vector2(game_size.x/2, -(game_size.y+border_width))
 @onready var game_cam: GameCamera = $GameCam
 
 
-
-
 func spawn_players() -> void:
 	pass
 
 
-
-	
 func _get_players():
 	var playerCharPath = Global.playerCharPath
 	var playerNode = load(playerCharPath).instantiate()

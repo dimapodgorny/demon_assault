@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmnhc8r14p71o"]
+[gd_scene load_steps=11 format=3 uid="uid://dmnhc8r14p71o"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_by620"]
 [ext_resource type="Script" path="res://network.gd" id="2_s25u2"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bycuukmjrqt1x" path="res://UI/lobby.tscn" id="3_kvbb5"]
 [ext_resource type="Script" path="res://debug.gd" id="4_i5d42"]
 [ext_resource type="PackedScene" uid="uid://dckb61r8luk25" path="res://UI/main_menu.tscn" id="4_t0a5d"]
+[ext_resource type="Script" path="res://camera.gd" id="7_b6npe"]
+[ext_resource type="Texture2D" uid="uid://c1k8x2cy0f5wl" path="res://Scripts/Big_Poo.png" id="8_jv01r"]
+[ext_resource type="PackedScene" uid="uid://4m1i340dtm6g" path="res://UI/Character select/character_selection.tscn" id="9_eq7dv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_by620")
@@ -76,6 +79,7 @@ script = ExtResource("4_i5d42")
 layout_mode = 2
 offset_right = 68.0
 offset_bottom = 133.0
+theme_override_constants/separation = 10
 
 [node name="DEBUG" type="Label" parent="debug/VBoxContainer"]
 custom_minimum_size = Vector2(68, 0)
@@ -102,6 +106,20 @@ layout_mode = 2
 text = "Client ID: n/a"
 autowrap_mode = 2
 
+[node name="Physics Process Delta" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "Physics delta: 
+"
+autowrap_mode = 2
+
+[node name="Process Delta" type="Label" parent="debug/VBoxContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "Process delta: 
+"
+autowrap_mode = 2
+
 [node name="command" type="LineEdit" parent="debug/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(68, 0)
@@ -114,6 +132,22 @@ unique_name_in_owner = true
 script = ExtResource("2_s25u2")
 
 [node name="Node2D" type="Node2D" parent="Network"]
+
+[node name="Game" type="Node2D" parent="Network/Node2D"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Network/Node2D/Game"]
+spawn_path = NodePath("../Game")
+
+[node name="Camera" type="Camera2D" parent="Network/Node2D/Game"]
+position_smoothing_speed = 10.0
+script = ExtResource("7_b6npe")
+
+[node name="Game" parent="Network/Node2D/Game" instance_placeholder="res://game/game.tscn"]
+visible = false
+
+[node name="MainMenu" parent="Network/Node2D" instance=ExtResource("4_t0a5d")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
 
 [node name="Lobby" parent="Network/Node2D" instance=ExtResource("3_kvbb5")]
 unique_name_in_owner = true
@@ -147,17 +181,16 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "->"
 
-[node name="Game" parent="Network/Node2D" instance_placeholder="res://game/game.tscn"]
-visible = false
+[node name="CharacterSelection" parent="Network/Node2D" instance=ExtResource("9_eq7dv")]
+z_index = 10
+custom_minimum_size = Vector2(1152, 648)
 
-[node name="Camera" type="Camera2D" parent="Network/Node2D/Game"]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../Network")
-
-[node name="MainMenu" parent="." instance=ExtResource("4_t0a5d")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
+[node name="BigPoo" type="Sprite2D" parent="."]
+z_index = 4096
+y_sort_enabled = true
+position = Vector2(1231.5, 0.1)
+scale = Vector2(1.91272, 0.956845)
+texture = ExtResource("8_jv01r")
 
 [connection signal="text_submitted" from="debug/VBoxContainer/command" to="debug" method="_on_command_text_submitted"]
 [connection signal="text_changed" from="Network/Node2D/Lobby/UsernameEdit" to="Network" method="_on_username_edited"]

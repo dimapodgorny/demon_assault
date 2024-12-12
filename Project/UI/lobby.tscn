@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bycuukmjrqt1x"]
+[gd_scene load_steps=5 format=3 uid="uid://bycuukmjrqt1x"]
 
 [ext_resource type="Script" path="res://UI/lobby.gd" id="1_nuswy"]
+[ext_resource type="Script" path="res://UI/player_slot.gd" id="2_262sw"]
+[ext_resource type="Texture2D" uid="uid://c6i4sl3vnuxd7" path="res://TEXTURE_NULL.png" id="2_qrsxh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3qsh"]
 bg_color = Color(0.136826, 0.136826, 0.136826, 0.607843)
@@ -51,8 +53,54 @@ text = "PLAYERS WILL BE STORED AS SIBLINGS TO THIS NODE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="PlayerSlot" parent="players/ScrollContainer/VBoxContainer" instance_placeholder="res://UI/player_slot.tscn"]
+[node name="0" type="Control" parent="players/ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(237, 108)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("2_262sw")
+
+[node name="PlayerName" type="Label" parent="players/ScrollContainer/VBoxContainer/0"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_right = 236.0
+offset_bottom = 21.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "COOLPLAYERNAME2017"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerIcon" type="TextureRect" parent="players/ScrollContainer/VBoxContainer/0"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_vertical = 2
+texture = ExtResource("2_qrsxh")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ChallengeButton" type="Button" parent="players/ScrollContainer/VBoxContainer/0"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_right = 237.0
+offset_bottom = 35.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
 
 [node name="BackToMenu" type="Button" parent="."]
 layout_mode = 0
@@ -63,4 +111,102 @@ offset_bottom = 622.0
 theme_override_font_sizes/font_size = 17
 text = "back to main menu"
 
+[node name="ChallengePrompter" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.564706)
+
+[node name="Challenging Player" type="Control" parent="ChallengePrompter"]
+visible = false
+z_index = 4096
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ChallengePrompter/Challenging Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 405.0
+offset_top = 291.0
+offset_right = 707.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Challenging player"
+
+[node name="Button" type="Button" parent="ChallengePrompter/Challenging Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 520.0
+offset_top = 326.0
+offset_right = 593.0
+offset_bottom = 351.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "cancel"
+
+[node name="Getting Challenged" type="Control" parent="ChallengePrompter"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ChallengePrompter/Getting Challenged"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.5
+offset_top = 291.0
+offset_right = 1009.5
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "[name] challenged you lol yro'ue gna lose lmfaoooooooo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChallengePrompter/Getting Challenged"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = 335.0
+offset_right = 1137.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Accept" type="Button" parent="ChallengePrompter/Getting Challenged/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "accept ✅"
+
+[node name="Decline" type="Button" parent="ChallengePrompter/Getting Challenged/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "decline ❌"
+
+[connection signal="pressed" from="players/ScrollContainer/VBoxContainer/0/ChallengeButton" to="players/ScrollContainer/VBoxContainer/0" method="_on_challenge_button_pressed"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="ChallengePrompter/Getting Challenged/HBoxContainer/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="ChallengePrompter/Getting Challenged/HBoxContainer/Decline" to="." method="_on_decline_pressed"]

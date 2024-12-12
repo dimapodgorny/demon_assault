@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://chix6ybkjeqa7"]
+[gd_scene load_steps=2 format=3 uid="uid://chix6ybkjeqa7"]
 
-[ext_resource type="Script" path="res://UI/player_slot.gd" id="1_i2yfe"]
-[ext_resource type="Texture2D" uid="uid://c6i4sl3vnuxd7" path="res://TEXTURE_NULL.png" id="1_o8u28"]
+[ext_resource type="Script" path="res://UI/character_slot.gd" id="1_npktr"]
 
 [node name="character slot" type="Control"]
+z_index = 20
 texture_filter = 1
 custom_minimum_size = Vector2(130, 132)
 layout_mode = 3
@@ -14,7 +14,7 @@ offset_right = 65.0
 offset_bottom = 66.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_i2yfe")
+script = ExtResource("1_npktr")
 
 [node name="character name" type="Label" parent="."]
 z_index = 10
@@ -48,7 +48,6 @@ offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_o8u28")
 expand_mode = 5
 
 [node name="selection" type="Button" parent="."]

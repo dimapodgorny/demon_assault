@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://4m1i340dtm6g"]
+
+[ext_resource type="Script" path="res://UI/Character select/character_selection.gd" id="1_flogt"]
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flogt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 8
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.905882)
+
+[node name="control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -220.0
+offset_right = 133.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="control"]
+z_index = 8
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.635294)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character Icon" type="TextureRect" parent="control"]
+layout_mode = 2
+offset_right = 266.0
+offset_bottom = 188.0
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="control"]
+layout_mode = 0
+offset_top = 215.0
+offset_right = 266.0
+offset_bottom = 440.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="control/ScrollContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
