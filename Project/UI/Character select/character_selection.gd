@@ -1,6 +1,7 @@
 extends Control
 
 @onready var character_icon: TextureRect = $"control/Character Icon"
+var character_button: Button
 
 func _ready() -> void:	
 	if owner is Main:

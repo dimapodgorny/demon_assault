@@ -44,7 +44,7 @@ func set_Player_A_ID(ID : int):
 @rpc("any_peer", "call_local", "reliable")
 func set_Player_B_ID(ID : int):
 	Player_B = ID
-
+	
 	
 func _ready() -> void:
 	server_created.connect(update_peers)
@@ -108,7 +108,7 @@ func close_server():
 func create_client(address = ADDRESS, port = PORT):
 	networkPeer = ENetMultiplayerPeer.new()
 	var netErr = networkPeer.create_client(address, port)
-	
+	HTTPRequest
 	if netErr == OK:
 		multiplayer.multiplayer_peer = networkPeer
 		emit_signal("client_connected")
